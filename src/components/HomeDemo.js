@@ -16,10 +16,10 @@ function HomeDemo(props){
     <div>
      <Paper className={classes.root}>
        <Typography variant="h5" component="h3">
-         Home Demo Front Base Cumplo
+         MVC Philosophy React App
        </Typography>
        <Typography component="p">
-         This is a base standard project for Cumplo Aps
+         This is a base standard project MVC Philosophy
        </Typography>
      </Paper>
    </div>
