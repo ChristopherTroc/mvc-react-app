@@ -13,94 +13,86 @@ Models live in /src/models folder. Next this is a high class Model base, and all
 
 ```javascript
 import axios from 'axios';
-/*
- * Base Parent Model, "All sub clases models have to extends from this"
- */
+/**
+Base Parent Model, "All sub class models have to extends from this"
+*/
 class Model {
-  /*
-  * Method: Get
-  * Param: url, null
-  * Return: Result [] or reject error
+  /**
+  Method: Get
+  Param: url, null
+  Return: Result [] or reject error
   */
   get = (url, headers) => {
-    return new Promise((resolve, reject) => {
-      axios
-        .get(url, headers)
-        .then((response) => {
-          return resolve(response);
-        })
-        .catch(function(error) {
-          return reject(error);
-        });
-    });
+    return axios
+      .get(url, headers)
+      .then((response) => {
+        return response;
+      })
+      .catch(function(error) {
+        return error;
+      });
   };
-  /*
-  * Method:Post
-  * Param: url, []
-  * Return: Result [] or reject error
+  /**
+  Method:Post
+  Param: url, []
+  Return: Result [] or reject error
   */
   post = (url, argument = [], headers) => {
-    return new Promise((resolve, reject) => {
-      axios
-        .post(url, argument, headers)
-        .then((response) => {
-          return resolve(response);
-        })
-        .catch(function(error) {
-          return reject(error);
-        });
-    });
+    return axios
+      .post(url, argument, headers)
+      .then((response) => {
+        return response;
+      })
+      .catch(function(error) {
+        return error;
+      });
   };
-  /*
-  * Method: Put
-  * Param: url, []
-  * Return: Result [] or reject error
+  /**
+  Method: Put
+  Param: url, []
+  Return: Result [] or reject error
   */
   put = (url, argument = [], headers) => {
-    return new Promise((resolve, reject) => {
-      axios
-        .put(url, argument, this.headers)
-        .then((response) => {
-          return resolve(response);
-        })
-        .catch(function(error) {
-          return reject(error);
-        });
-    });
+    return axios
+      .put(url, argument, this.headers)
+      .then((response) => {
+        return response;
+      })
+      .catch(function(error) {
+        return error;
+      });
   };
-  /*
-  * Method: Delete
-  * Params: url, null
-  * Return: Result [] or reject error
+  /**
+  Method: Delete
+  Params: url, null
+  Return: Result [] or reject error
   */
   delete = (url, headers) => {
-    return new Promise((resolve, reject) => {
-      axios
-        .delete(url, headers)
-        .then((response) => {
-          return resolve(response);
-        })
-        .catch(function(error) {
-          return reject(error);
-        });
-    });
+    return axios
+      .delete(url, headers)
+      .then((response) => {
+        return response;
+      })
+      .catch(function(error) {
+        return error;
+      });
   };
 } //End class
 
 export default Model;
-
 ```
+
 This is a sub class Model Context and extends from Model.
 
 ```javascript
 import Model from './Model';
-/*
- * This class extend from parent Model, here you define a group of functions
- * by context, for example CRUD functions from Users backend api. This class must be
- * instantiated in the containers class components, inside constructor method and
- * have to passed an arguments calling globals (this.props.globals), this come from
- * redux store, and has an object with important global data like a base urls.
- */
+/**
+This class extend from parent Model, here you define a group of functions
+by context, for example CRUD functions from Users backend api. This class must be
+instantiated in the containers class components, inside constructor method and
+have to passed an arguments calling globals (this.props.globals), this come from
+redux store, and has an object with important global data like a base urls.
+*/
 class UserModel extends Model {
   constructor(globals) {
     super();
@@ -109,11 +101,11 @@ class UserModel extends Model {
     this.headers = globals.headers;
     //this.headers = ''; Uncoment this if your api dont require headers
   }
-  /*
-   * Example, Get function
-   * Params: id
-   * Return: object {}
-   */
+  /**
+  Example, Get function
+  Params: id
+  Return: object {}
+  */
   getUser = async (id) => {
     let url = `${this.url}users/${id}`;
     let response = { name: "", lastname:"", age: 0, sports: [{},] }; //Must be a clone of response structure object
@@ -124,10 +116,10 @@ class UserModel extends Model {
     }
     return response.data;
   };
-  /*
-   * Example, Post function
-   * Params: object {}
-   * Return: data.status
+   /**
+   Example, Post function
+   Params: object {}
+   Return: data.status
    */
    addUser = async (user_data_object) => {
     let url = `${this.url}users/`;
@@ -139,11 +131,11 @@ class UserModel extends Model {
     }
     return response.data.status;
   };
-  /*
-   * Example, Put function
-   * Params: object {}
-   * Return: data.status Int
-   */
+  /**
+  Example, Put function
+  Params: object {}
+  Return: data.status Int
+  */
   updateUser = async (user_data_object) => {
     let url = `${this.url}users/`;
     let response = { data: { status: 404 } };
@@ -155,11 +147,11 @@ class UserModel extends Model {
     return response.data.status;
   };
 
-  /*
-   * Example, Delete function
-   * Params: id
-   * Return: object {}
-   */
+  /**
+  Example, Delete function
+  Params: id
+  Return: object {}
+  */
   dropUser = async (id) => {
     let url = `${this.url}users/${id}`;
     let response = { data: { status: 404 } };  //Must be a clone of response structure object
@@ -174,7 +166,6 @@ class UserModel extends Model {
 }
 
 export default UserModel;
-
 ```
 
 ### Containers
