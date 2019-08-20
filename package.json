@@ -4,18 +4,19 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.2.0",
+    "axios": "^0.19.0",
     "eslint-config-dev": "^2.0.0",
     "eslint-plugin-prettier": "^3.0.1",
+    "jsonwebtoken": "^8.5.1",
+    "notistack": "^0.4.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-scripts": "3.0.1",
+    "react-google-login": "^5.0.4",
     "react-redux": "^6.0.0",
     "react-router-dom": "^4.3.1",
+    "react-scripts": "3.0.1",
     "redux": "^4.0.1",
-    "redux-persist": "^5.10.0",
-    "react-google-login": "^5.0.4",
-    "jsonwebtoken": "^8.5.1",
-    "notistack": "^0.4.3"
+    "redux-persist": "^5.10.0"
   },
   "scripts": {
     "start": "react-scripts start",
