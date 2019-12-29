@@ -9,7 +9,7 @@ model-views-container.
 
 ### Models
 
-Models live in /src/models folder. Next this is a high class Model base, and all model extends from him.
+Models live in /src/models folder. Next this is a high class Model base, and all model extends from her.
 
 ```javascript
 import axios from 'axios';
